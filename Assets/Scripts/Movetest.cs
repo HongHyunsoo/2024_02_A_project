@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movetest : MonoBehaviour
 {
+
+public Transform Move;
     // Start is called before the first frame update
     void Start()
     {

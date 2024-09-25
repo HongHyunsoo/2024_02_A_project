@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movetest : MonoBehaviour
+public class MoveTest : MonoBehaviour
 {
 
     public Vector3 move;

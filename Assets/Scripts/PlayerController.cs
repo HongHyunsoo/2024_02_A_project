@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour
     private float currentX = 0.0f;      //수평 회전 각도
     private float currentY = 45.0f;     //수직 회전 각도
 
-    private const float Y_ANGLE_MAX = 0.0f;
-    private const float Y_ANGLE_MIM = 50.0f;
+    private const float Y_ANGLE_MIM = 0.0f;
+    private const float Y_ANGLE_MAX = 50.0f;
 
     public float radius = 5.0f;             //3인칭 카메라와 플레이어 간의 거리
     public float minRadius = 1.0f;          //카메라 최소 거리

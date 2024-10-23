@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class PlayerState
 {
    protected PlayerStateMachine stateMachine;       //상태 머신 참조
-
    protected PlayerController playerController;     //플레이어 컨트롤러 참조
+   protected PlayerAnimationManager animationManager;
 
     public PlayerState(PlayerStateMachine stateMachine) //상태머신과 플레이어 컨트롤러 참조 초기화
     {
-        this .stateMachine = stateMachine;
+        this.stateMachine = stateMachine;
         this.playerController = stateMachine.playerController;
+        this.animationManager = stateMachine.GetComponent<PlayerAnimationManager>();
     }
 
     //가상 메서드들 : 하위 클레스에서 필요에 따라 오버라이드
@@ -56,10 +58,15 @@ public abstract class PlayerState
 //IdleState : 플레이어가 정지해 있는 상태
 public class IdleState : PlayerState
 {
+    private bool isRunning;
     public IdleState(PlayerStateMachine stateMachine) : base(stateMachine) { }
     
     public override void Update()
     {
+
+        //달리기 입력 확인
+        isRunning = Input.GetKey(KeyCode.LeftShift);
+
         CheckTransitions();     //매 프레임 마다 상태 전환 조건 체크
     }
 }
@@ -67,10 +74,14 @@ public class IdleState : PlayerState
 //MovingState : 플레이어가 이동 중인 상태
 public class MovingState : PlayerState
 {
+    private bool isRunning;
     public MovingState (PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Update()
     {
+        //달리기 입력 확인
+        isRunning = Input.GetKey(KeyCode.LeftShift);
+
         CheckTransitions();     //매 프레임 마다 상태 전환 조건 체크
     }
 

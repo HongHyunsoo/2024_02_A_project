@@ -22,14 +22,12 @@ public class ItenDetector : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
     void Start()
     {
         lastPosition = transform.position;      //시작 시 현재 위치를 마지막 위치로 설정
         CheckForItems();                        //초기 아이템 체크 수행
     }
 
-    // Update is called once per frame
     void Update()
     {
         //플레이어가 일정 거리 이상 이동하였는지 체크

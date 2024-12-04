@@ -15,10 +15,10 @@ public class RecipeButton : MonoBehaviour
     private BuildingCraftor crafter;            //건물의 제작 시스템
     private PlayerInventory playerInventory;    //플레이어 인벤토리
 
-    public void Setup(CraftingRecipe recipe, BuildingCraftor craftor)   //버튼 셋업 함수
+    public void Setup(CraftingRecipe recipe, BuildingCraftor crafter)   //버튼 셋업 함수
     {
         this.recipe = recipe;
-        this.crafter = craftor;
+        this.crafter = crafter;
         playerInventory = FindObjectOfType<PlayerInventory>();
 
         recipeName.text = recipe.itemName;                          //레시피 정보 표시

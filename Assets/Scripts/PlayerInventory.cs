@@ -13,6 +13,10 @@ public class PlayerInventory : MonoBehaviour
     public int bushCount = 0;           //수풀 개수
     public int treeCount = 0;           //나무 개수
 
+    public int vegetableStewCount = 0;      //야채 스튜 개수
+    public int fruitSaledCount = 0;         //과일 샐러드 개수
+    public int repairKitCount = 0;          //수리 키트 개수
+
     public void Start()
     {
         survivalState = GetComponent<SurvivalState>();
@@ -75,6 +79,18 @@ public class PlayerInventory : MonoBehaviour
                 treeCount++;     //나무 개수 증가
                 Debug.Log($"나무 획득 ! 현재 개수 : {treeCount}");  //현재 나무 개수 입력
                 break;
+            case ItemType.VegetableStew:
+                vegetableStewCount++;     //야채 스튜 개수 증가
+                Debug.Log($"야채 스튜 획득 ! 현재 개수 : {vegetableStewCount}");  //현재 야채 스튜 개수 입력
+                break;
+            case ItemType.FruitSalad:
+                fruitSaledCount++;     //과일 샐러드 개수 증가
+                Debug.Log($"과일 샐러드 획득 ! 현재 개수 : {fruitSaledCount}");  //현재 과일 샐러드 개수 입력
+                break;
+            case ItemType.RepairKit:
+                repairKitCount++;     //수리 키트 개수 증가
+                Debug.Log($"수리 키트 획득 ! 현재 개수 : {repairKitCount}");  //현재 수리 키트 개수 입력
+                break;
         }
     }
 
@@ -115,6 +131,33 @@ public class PlayerInventory : MonoBehaviour
                     return true;
                 }
                 break;
+            case ItemType.VegetableStew:
+
+                if (vegetableStewCount >= amount)
+                {
+                    vegetableStewCount -= amount;     //야채 스튜 개수 증가
+                    Debug.Log($"야채 스튜 {amount} 사용 ! 현재 개수 : {vegetableStewCount}");  //현재 야채 스튜 개수 입력
+                    return true;
+                }
+                break;
+            case ItemType.FruitSalad:
+
+                if (fruitSaledCount >= amount)
+                {
+                    fruitSaledCount -= amount;     //과일 샐러드 개수 증가
+                    Debug.Log($"과일 샐러드 {amount} 사용 ! 현재 개수 : {fruitSaledCount}");  //현재 과일 샐러드 개수 입력
+                    return true;
+                }
+                break;
+            case ItemType.RepairKit:
+
+                if (repairKitCount >= amount)
+                {
+                    repairKitCount -= amount;     //수리 키트 개수 증가
+                    Debug.Log($"수리 키트 {amount} 사용 ! 현재 개수 : {repairKitCount}");  //현재 수리 키트 개수 입력
+                    return true;
+                }
+                break;
         }
         return false;
     }
@@ -131,6 +174,13 @@ public class PlayerInventory : MonoBehaviour
                 return bushCount;
             case ItemType.Tree:
                 return treeCount;
+
+            case ItemType.VegetableStew:
+                return vegetableStewCount;
+            case ItemType.FruitSalad:
+                return fruitSaledCount;
+            case ItemType.RepairKit:
+                return repairKitCount;
             default:
                 return 0;
         }
@@ -151,6 +201,9 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log($"식물: {plantCount}개");              //식물 개수 출력
         Debug.Log($"수풀: {bushCount}개");               //수풀 개수 출력
         Debug.Log($"나무: {treeCount}개");               //나무 개수 출력
+        Debug.Log($"야채 스튜: {vegetableStewCount}개");               //야채 스튜 개수 출력
+        Debug.Log($"과일 샐러드: {fruitSaledCount}개");               //과일 샐러드 개수 출력
+        Debug.Log($"수리 키트: {repairKitCount}개");               //수리 키트 개수 출력
         Debug.Log("========================");
     }
 }
